@@ -22,5 +22,9 @@ export const router = createBrowserRouter([
                 Component: ServiceDetails
             }
         ]
+    },
+    {
+        path: "/",
+        
     }
 ]);
