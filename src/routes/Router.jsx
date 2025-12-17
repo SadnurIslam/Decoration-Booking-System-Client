@@ -8,6 +8,8 @@ import Register from "../pages/Auth/Register";
 import Login from "../pages/Auth/Login";
 import About from "../pages/About/About";
 import Contact from "../pages/Contact/Contact";
+import DashboardLayout from "../layouts/DashboardLayout";
+import Dashboard from "../pages/Dashboard/Dashboard";
 
 export const router = createBrowserRouter([
     {
@@ -47,6 +49,16 @@ export const router = createBrowserRouter([
             {
                 path: "register",
                 Component: Register
+            }
+        ]
+    },
+    {
+        path: "/dashboard",
+        Component: DashboardLayout,
+        children:[
+            {
+                index: true,
+                Component: Dashboard
             }
         ]
     }
