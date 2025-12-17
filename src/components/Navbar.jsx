@@ -1,4 +1,4 @@
-import { NavLink, Link } from "react-router-dom";
+import { NavLink, Link } from "react-router";
 import { FiMenu, FiLogOut } from "react-icons/fi";
 import { motion } from "framer-motion";
 import useAuth from "../hooks/useAuth";
