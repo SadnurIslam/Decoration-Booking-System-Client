@@ -7,6 +7,7 @@ import AuthLayout from "../layouts/AuthLayout";
 import Register from "../pages/Auth/Register";
 import Login from "../pages/Auth/Login";
 import About from "../pages/About/About";
+import Contact from "../pages/Contact/Contact";
 
 export const router = createBrowserRouter([
     {
@@ -28,6 +29,10 @@ export const router = createBrowserRouter([
             {
                 path: "/about",
                 Component: About
+            },
+            {
+                path: "/contact",
+                Component: Contact
             }
         ]
     },

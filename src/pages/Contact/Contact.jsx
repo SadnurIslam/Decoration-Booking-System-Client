@@ -24,7 +24,7 @@ const Contact = () => {
               {
                 icon: FaPhoneAlt,
                 label: "Phone",
-                value: "+880 1XXX-XXXXXX",
+                value: "+880 1410845817",
               },
               {
                 icon: FaMapMarkerAlt,
