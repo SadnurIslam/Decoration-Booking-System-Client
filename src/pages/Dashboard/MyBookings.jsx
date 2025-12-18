@@ -99,20 +99,21 @@ const MyBookings = () => {
                     {booking.status}
                   </span>
 
-                  {!booking.paid && (
+                  {
+                    booking.payment_status==="paid"?
+                    <span className="text-success font-medium">
+                      Paid ✔
+                    </span>
+                    :
                     <button
                       onClick={() => handlePayment(booking)}
                       className="btn btn-primary btn-sm"
                     >
                       Pay Now
                     </button>
-                  )}
+                  }
 
-                  {booking.paid && (
-                    <span className="text-success font-medium">
-                      Paid ✔
-                    </span>
-                  )}
+                
                 </div>
               </div>
             </motion.div>

@@ -40,9 +40,11 @@ const BookingModal = ({ service, close }) => {
         eventDate: data.eventDate,
         timeSlot: data.timeSlot,
         address: data.address,
+        payment_status: "unpaid",
       });
 
       const bookingId = bookingRes.data.insertedId;
+      console.log(data);
 
       // Stripe payment
       const paymentRes = await axios.post("/create-payment-intent", {
