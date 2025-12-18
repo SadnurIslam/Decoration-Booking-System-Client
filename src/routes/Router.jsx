@@ -9,12 +9,15 @@ import Login from "../pages/Auth/Login";
 import About from "../pages/About/About";
 import Contact from "../pages/Contact/Contact";
 import DashboardLayout from "../layouts/DashboardLayout";
-import Dashboard from "../pages/Dashboard/Dashboard";
-import MyBookings from "../pages/Dashboard/MyBookings";
-import PaymentSuccess from "../pages/Dashboard/PaymentSuccess";
-import PaymentCancel from "../pages/Dashboard/PaymentCancel";
-import MyProfile from "../pages/Dashboard/MyProfile";
-import PaymentHistory from "../pages/Dashboard/PaymentHistory";
+import Dashboard from "../pages/Dashboard/user/Dashboard";
+import MyBookings from "../pages/Dashboard/user/MyBookings";
+import PaymentSuccess from "../pages/Dashboard/user/PaymentSuccess";
+import PaymentCancel from "../pages/Dashboard/user/PaymentCancel";
+import MyProfile from "../pages/Dashboard/user/MyProfile";
+import PaymentHistory from "../pages/Dashboard/user/PaymentHistory";
+import ManageServices from "../pages/Dashboard/admin/ManageServices";
+import ManageBookings from "../pages/Dashboard/admin/ManageBookings";
+import ManageDecorators from "../pages/Dashboard/admin/ManageDecorators";
 
 export const router = createBrowserRouter([
     {
@@ -63,7 +66,7 @@ export const router = createBrowserRouter([
         children:[
             {
                 index: true,
-                Component: Dashboard
+                Component: MyProfile
             },
             {
                 path: "my-bookings",
@@ -78,12 +81,20 @@ export const router = createBrowserRouter([
                 Component: PaymentCancel
             },
             {
-                path: "profile",
-                Component: MyProfile
-            },
-            {
                 path: "payments",
                 Component: PaymentHistory
+            },
+            {
+                path: "manage-services",
+                element: <ManageServices></ManageServices>
+            },
+            {
+                path: "manage-bookings",
+                element: <ManageBookings></ManageBookings>
+            },
+            {
+                path: "manage-decorators",
+                element: <ManageDecorators></ManageDecorators>
             }
         ]
     }

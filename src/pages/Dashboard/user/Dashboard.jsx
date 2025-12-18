@@ -5,9 +5,9 @@ import {
   FaMoneyBillWave,
   FaClock,
 } from "react-icons/fa";
-import useAuth from "../../hooks/useAuth";
-import useAxiosSecure from "../../hooks/useAxiosSecure";
-import LoadingSpinner from "../../components/LoadingSpinner";
+import useAuth from "../../../hooks/useAuth";
+import useAxiosSecure from "../../../hooks/useAxiosSecure";
+import LoadingSpinner from "../../../components/LoadingSpinner";
 
 const Dashboard = () => {
   const { user } = useAuth();

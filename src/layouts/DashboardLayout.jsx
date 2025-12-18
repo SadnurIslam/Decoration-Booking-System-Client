@@ -40,7 +40,6 @@ const DashboardLayout = () => {
   return (
     <div className="min-h-screen bg-base-100 flex">
 
-      {/* Sidebar */}
       <aside
         className={`
           fixed lg:static z-40 inset-y-0 left-0 w-72
@@ -72,7 +71,6 @@ const DashboardLayout = () => {
         </div>
       </aside>
 
-      {/* Overlay */}
       {open && (
         <div
           onClick={() => setOpen(false)}
@@ -80,7 +78,6 @@ const DashboardLayout = () => {
         />
       )}
 
-      {/* Main */}
       <div className="flex-1 flex flex-col min-h-screen">
 
         <header className="h-16 px-6 border-b flex items-center justify-between bg-base-100 sticky top-0 z-20">
@@ -127,7 +124,6 @@ const DashboardLayout = () => {
 
 export default DashboardLayout;
 
-/* ------------------ Shared Item ------------------ */
 
 const AnimatedItem = ({ to, children, icon, end }) => (
   <motion.li whileHover={{ x: 6 }} transition={{ type: "spring", stiffness: 260 }}>
@@ -149,13 +145,12 @@ const AnimatedItem = ({ to, children, icon, end }) => (
   </motion.li>
 );
 
-/* ------------------ USER MENU ------------------ */
 
 const UserMenu = () => (
   <>
-    <AnimatedItem to="/dashboard/profile" icon={<FaUserCircle />}>
+    {/* <AnimatedItem to="/dashboard/profile" icon={<FaUserCircle />}>
       My Profile
-    </AnimatedItem>
+    </AnimatedItem> */}
 
     <AnimatedItem to="/dashboard/my-bookings" icon={<FaClipboardList />}>
       My Bookings
@@ -167,7 +162,6 @@ const UserMenu = () => (
   </>
 );
 
-/* ------------------ ADMIN MENU ------------------ */
 
 const AdminMenu = () => (
   <>
@@ -183,17 +177,16 @@ const AdminMenu = () => (
       Manage Decorators
     </AnimatedItem>
 
-    <AnimatedItem to="/dashboard/revenue" icon={<FaMoneyBill />}>
+    {/* <AnimatedItem to="/dashboard/revenue" icon={<FaMoneyBill />}>
       Revenue Monitoring
-    </AnimatedItem>
+    </AnimatedItem> */}
 
-    <AnimatedItem to="/dashboard/analytics" icon={<FaChartBar />}>
+    {/* <AnimatedItem to="/dashboard/analytics" icon={<FaChartBar />}>
       Analytics
-    </AnimatedItem>
+    </AnimatedItem> */}
   </>
 );
 
-/* ------------------ DECORATOR MENU ------------------ */
 
 const DecoratorMenu = () => (
   <>
