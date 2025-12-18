@@ -2,20 +2,34 @@ import { useQuery } from "@tanstack/react-query";
 import useAxiosSecure from "../../hooks/useAxiosSecure";
 import useAuth from "../../hooks/useAuth";
 import LoadingSpinner from "../../components/LoadingSpinner";
-import { motion } from "framer-motion";
+import Swal from "sweetalert2";
 
 const MyBookings = () => {
   const axios = useAxiosSecure();
   const { user } = useAuth();
 
-  const { data: bookings = [], isLoading } = useQuery({
+  const { data: bookings = [], isLoading, refetch } = useQuery({
     queryKey: ["my-bookings", user?.email],
     queryFn: async () => {
       const res = await axios.get(`/bookings?email=${user.email}`);
       return res.data;
     },
-    enabled: !!user?.email,
   });
+
+  const handleCancel = async (id) => {
+    const result = await Swal.fire({
+      title: "Cancel booking?",
+      text: "This action cannot be undone",
+      icon: "warning",
+      showCancelButton: true,
+      confirmButtonColor: "#d33",
+    });
+
+    if (!result.isConfirmed) return;
+
+    await axios.delete(`/bookings/${id}`);
+    refetch();
+  };
 
   const handlePayment = async (booking) => {
     const res = await axios.post("/create-payment-intent", {
@@ -34,92 +48,79 @@ const MyBookings = () => {
 
   return (
     <div>
-      <h1 className="text-3xl font-bold mb-8">My Bookings</h1>
+      <h1 className="text-3xl font-bold mb-6">My Bookings</h1>
 
-      {bookings.length === 0 ? (
-        <p className="text-base-content/70">
-          You have not booked any services yet.
-        </p>
-      ) : (
-        <div className="grid lg:grid-cols-2 gap-6">
-          {bookings.map((booking) => (
-            <motion.div
-              key={booking._id}
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.3 }}
-              className="card bg-base-100 shadow-xl rounded-3xl"
-            >
-              <div className="card-body space-y-4">
-                <div className="flex gap-4">
-                  <img
-                    src={booking.serviceImage}
-                    alt={booking.serviceName}
-                    className="w-24 h-24 rounded-2xl object-cover"
-                  />
+      <div className="overflow-x-auto rounded-2xl border">
+        <table className="table">
+          <thead className="bg-base-200">
+            <tr>
+              <th>Service</th>
+              <th>Date</th>
+              <th>Location</th>
+              <th>Status</th>
+              <th>Payment</th>
+              <th>Action</th>
+            </tr>
+          </thead>
 
-                  <div className="flex-1">
-                    <h2 className="text-xl font-semibold">
-                      {booking.serviceName}
-                    </h2>
-                    <p className="text-sm text-base-content/70">
-                      Category: {booking.category}
-                    </p>
-                    <p className="font-bold text-primary mt-1">
-                      ৳ {booking.price}
-                    </p>
-                  </div>
-                </div>
+          <tbody>
+            {bookings.map((b) => (
+              <tr key={b._id}>
+                <td className="font-medium">{b.serviceName}</td>
+                <td>{b.eventDate}</td>
+                <td>{b.address}</td>
 
-                <div className="grid sm:grid-cols-2 gap-3 text-sm">
-                  <div>
-                    <span className="font-medium">Event Date:</span>{" "}
-                    {booking.eventDate}
-                  </div>
-                  <div>
-                    <span className="font-medium">Time Slot:</span>{" "}
-                    {booking.timeSlot}
-                  </div>
-                  <div className="sm:col-span-2">
-                    <span className="font-medium">Location:</span>{" "}
-                    {booking.address}
-                  </div>
-                </div>
-
-                <div className="flex justify-between items-center pt-3 border-t">
-                  <span
-                    className={`badge ${
-                      booking.status === "Pending"
-                        ? "badge-warning"
-                        : booking.status === "Confirmed"
-                        ? "badge-info"
-                        : "badge-success"
-                    }`}
-                  >
-                    {booking.status}
+                <td>
+                  <span className="badge badge-outline">
+                    {b.status}
                   </span>
+                </td>
 
-                  {
-                    booking.payment_status==="paid"?
-                    <span className="text-success font-medium">
-                      Paid ✔
+                <td>
+                  {b.payment_status === "paid" ? (
+                    <span className="badge badge-success">Paid</span>
+                  ) : (
+                    <span className="badge badge-warning">Unpaid</span>
+                  )}
+                </td>
+
+                <td>
+                  {b.payment_status !== "paid" && (
+                    <>
+                      <button
+                        onClick={() => handlePayment(b)}
+                        className="btn btn-xs btn-info btn-outline mr-3 "
+                      >
+                        Pay now
+                      </button>
+                      <button
+                        onClick={() => handleCancel(b._id)}
+                        className="btn btn-xs btn-error btn-outline"
+                      >
+                        Cancel
+                      </button>
+
+                    </>
+                  )}
+                  {b.payment_status === "paid" && (
+                    <span className="text-sm opacity-60">
+                      N/A
                     </span>
-                    :
-                    <button
-                      onClick={() => handlePayment(booking)}
-                      className="btn btn-primary btn-sm"
-                    >
-                      Pay Now
-                    </button>
-                  }
+                  )}
+                </td>
+              </tr>
+            ))}
 
-                
-                </div>
-              </div>
-            </motion.div>
-          ))}
-        </div>
-      )}
+            {bookings.length === 0 && (
+              <tr>
+                <td colSpan="6" className="text-center py-8 opacity-60">
+                  No bookings found
+                </td>
+              </tr>
+            )}
+          </tbody>
+        </table>
+      </div>
     </div>
   );
 };
