@@ -10,6 +10,7 @@ import About from "../pages/About/About";
 import Contact from "../pages/Contact/Contact";
 import DashboardLayout from "../layouts/DashboardLayout";
 import Dashboard from "../pages/Dashboard/Dashboard";
+import MyBookings from "../pages/Dashboard/MyBookings";
 
 export const router = createBrowserRouter([
     {
@@ -59,6 +60,10 @@ export const router = createBrowserRouter([
             {
                 index: true,
                 Component: Dashboard
+            },
+            {
+                path: "my-bookings",
+                Component: MyBookings
             }
         ]
     }

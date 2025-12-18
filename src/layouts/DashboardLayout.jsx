@@ -145,10 +145,10 @@ const AnimatedItem = ({ to, children, icon, end }) => (
 
 const UserMenu = () => (
     <>
-        <AnimatedItem to="my-bookings" icon={<FaClipboardList />}>
+        <AnimatedItem to="/dashboard/my-bookings" icon={<FaClipboardList />}>
             My Bookings
         </AnimatedItem>
-        <AnimatedItem to="payments" icon={<FaMoneyBill />}>
+        <AnimatedItem to="/dashboard/payments" icon={<FaMoneyBill />}>
             Payments
         </AnimatedItem>
     </>
@@ -156,10 +156,10 @@ const UserMenu = () => (
 
 const AdminMenu = () => (
     <>
-        <AnimatedItem to="manage-services" icon={<FaClipboardList />}>
+        <AnimatedItem to="/dashboard/manage-services" icon={<FaClipboardList />}>
             Manage Services
         </AnimatedItem>
-        <AnimatedItem to="manage-users" icon={<FaUsers />}>
+        <AnimatedItem to="/dashboard/manage-users" icon={<FaUsers />}>
             Manage Users
         </AnimatedItem>
     </>
@@ -167,7 +167,7 @@ const AdminMenu = () => (
 
 const DecoratorMenu = () => (
     <>
-        <AnimatedItem to="assigned-jobs" icon={<FaClipboardList />}>
+        <AnimatedItem to="/dashboard/assigned-jobs" icon={<FaClipboardList />}>
             Assigned Jobs
         </AnimatedItem>
     </>
