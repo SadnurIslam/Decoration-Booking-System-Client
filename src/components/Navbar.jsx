@@ -1,5 +1,5 @@
 import { NavLink, Link } from "react-router";
-import { FiMenu, FiLogOut } from "react-icons/fi";
+import { FiMenu, FiLogOut, FiGrid } from "react-icons/fi";
 import { motion } from "framer-motion";
 import useAuth from "../hooks/useAuth";
 import Logo from "./Logo";
@@ -28,12 +28,8 @@ const Navbar = () => {
 
           {/* Left */}
           <div className="navbar-start gap-2">
-            {/* Mobile Menu */}
             <div className="dropdown">
-              <label
-                tabIndex={0}
-                className="btn btn-ghost lg:hidden"
-              >
+              <label tabIndex={0} className="btn btn-ghost lg:hidden">
                 <FiMenu className="text-2xl" />
               </label>
 
@@ -62,8 +58,13 @@ const Navbar = () => {
                 </NavLink>
               </li>
               <li>
-                <NavLink to="/dashboard" className={navLinkClass}>
-                  Dashboard
+                <NavLink to="/about" className={navLinkClass}>
+                  About
+                </NavLink>
+              </li>
+              <li>
+                <NavLink to="/contact" className={navLinkClass}>
+                  Contact
                 </NavLink>
               </li>
             </ul>
@@ -71,6 +72,16 @@ const Navbar = () => {
 
           {/* Right */}
           <div className="navbar-end gap-3">
+            {user && (
+              <Link
+                to="/dashboard"
+                className="btn btn-outline btn-sm rounded-full hidden sm:flex"
+              >
+                <FiGrid />
+                Dashboard
+              </Link>
+            )}
+
             {user ? (
               <div className="dropdown dropdown-end">
                 <label tabIndex={0} className="cursor-pointer">
@@ -84,11 +95,18 @@ const Navbar = () => {
 
                 <ul
                   tabIndex={0}
-                  className="menu dropdown-content mt-3 w-44 rounded-2xl border border-base-200 bg-base-100 p-2 shadow-xl"
+                  className="menu dropdown-content mt-3 w-48 rounded-2xl border border-base-200 bg-base-100 p-2 shadow-xl"
                 >
-                  <li className="px-2 py-1 text-xs text-base-content/60">
+                  <li className="px-3 py-2 text-xs text-base-content/60">
                     {user.email}
                   </li>
+
+                  <li>
+                    <Link to="/dashboard" className="flex items-center gap-2">
+                      <FiGrid /> Dashboard
+                    </Link>
+                  </li>
+
                   <li>
                     <button
                       onClick={logOut}
@@ -114,5 +132,3 @@ const Navbar = () => {
 };
 
 export default Navbar;
-
-
