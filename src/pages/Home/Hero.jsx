@@ -1,5 +1,6 @@
 import { motion } from "framer-motion";
 import { FaArrowRight, FaPalette } from "react-icons/fa";
+import { Link } from "react-router";
 
 const Hero = () => {
     return (
@@ -44,12 +45,12 @@ const Hero = () => {
                     transition={{ delay: 0.3 }}
                     className="mt-10 flex justify-center gap-4"
                 >
-                    <button className="btn btn-primary rounded-full px-8">
+                    <Link to='/register' className="btn btn-primary rounded-full px-8">
                         Get Started <FaArrowRight />
-                    </button>
-                    <button className="btn btn-outline rounded-full px-8">
+                    </Link>
+                    <Link to='/services' className="btn btn-outline rounded-full px-8">
                         View Services
-                    </button>
+                    </Link>
                 </motion.div>
             </div>
         </section>

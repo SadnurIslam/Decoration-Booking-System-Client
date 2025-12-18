@@ -1,8 +1,22 @@
-import { Outlet } from "react-router";
+import { Outlet, useNavigate } from "react-router";
 import Logo from "../components/Logo";
 import { motion } from "framer-motion";
+import useAuth from "../hooks/useAuth";
+import LoadingSpinner from "../components/LoadingSpinner";
 
 const AuthLayout = () => {
+
+  const {user, loading} = useAuth();
+  const navigate = useNavigate();
+
+  if(loading){
+    return <LoadingSpinner></LoadingSpinner>
+  }
+
+  if(user){
+    navigate("/");
+  }
+
   return (
     <main className="min-h-screen bg-base-100">
       <div className="mx-auto grid min-h-screen max-w-7xl grid-cols-1 lg:grid-cols-2">
