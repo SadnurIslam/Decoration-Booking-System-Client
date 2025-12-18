@@ -10,7 +10,9 @@ import {
   FaChartBar,
   FaTasks,
   FaCalendarAlt,
+
 } from "react-icons/fa";
+import { FcManager } from "react-icons/fc";
 import { motion, AnimatePresence } from "framer-motion";
 import { useState } from "react";
 import useRole from "../hooks/useRole";
@@ -158,6 +160,10 @@ const UserMenu = () => (
 
     <AnimatedItem to="/dashboard/payments" icon={<FaMoneyBill />}>
       Payment History
+    </AnimatedItem>
+
+    <AnimatedItem to="/dashboard/decorator-apply" icon={<FcManager />}>
+      Be a Decorator
     </AnimatedItem>
   </>
 );

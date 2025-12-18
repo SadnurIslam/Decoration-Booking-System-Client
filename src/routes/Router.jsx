@@ -18,6 +18,9 @@ import PaymentHistory from "../pages/Dashboard/user/PaymentHistory";
 import ManageServices from "../pages/Dashboard/admin/ManageServices";
 import ManageBookings from "../pages/Dashboard/admin/ManageBookings";
 import ManageDecorators from "../pages/Dashboard/admin/ManageDecorators";
+import DecoratorApply from "../pages/Dashboard/user/DecoratorApply";
+import AdminRoute from "./AdminRoute";
+import PrivateRoute from "./PrivateRoute";
 
 export const router = createBrowserRouter([
     {
@@ -62,39 +65,43 @@ export const router = createBrowserRouter([
     },
     {
         path: "/dashboard",
-        Component: DashboardLayout,
+        element: <PrivateRoute><DashboardLayout></DashboardLayout></PrivateRoute>,
         children:[
             {
                 index: true,
-                Component: MyProfile
+                element: <PrivateRoute><MyProfile></MyProfile></PrivateRoute>
             },
             {
                 path: "my-bookings",
-                Component: MyBookings
+                element: <PrivateRoute><MyBookings></MyBookings></PrivateRoute>
             },
             {
                 path: "payment-success",
-                Component: PaymentSuccess
+                element: <PrivateRoute><PaymentSuccess></PaymentSuccess></PrivateRoute>
             },
             {
                 path: "payment-cancel",
-                Component: PaymentCancel
+                element: <PrivateRoute><PaymentCancel></PaymentCancel></PrivateRoute>
             },
             {
                 path: "payments",
-                Component: PaymentHistory
+                element: <PrivateRoute><PaymentHistory></PaymentHistory></PrivateRoute>
+            },
+            {
+                path: "decorator-apply",
+                element: <PrivateRoute><DecoratorApply></DecoratorApply></PrivateRoute>
             },
             {
                 path: "manage-services",
-                element: <ManageServices></ManageServices>
+                element: <AdminRoute><ManageServices></ManageServices></AdminRoute>
             },
             {
                 path: "manage-bookings",
-                element: <ManageBookings></ManageBookings>
+                element: <AdminRoute><ManageBookings></ManageBookings></AdminRoute>
             },
             {
                 path: "manage-decorators",
-                element: <ManageDecorators></ManageDecorators>
+                element: <AdminRoute><ManageDecorators></ManageDecorators></AdminRoute>
             }
         ]
     }

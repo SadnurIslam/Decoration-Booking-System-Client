@@ -1,7 +1,10 @@
 import useAuth from "../../../hooks/useAuth";
+import useRole from "../../../hooks/useRole";
 
 const MyProfile = () => {
   const { user } = useAuth();
+
+  const {role} = useRole();
 
   return (
     <div className="max-w-3xl">
@@ -26,7 +29,7 @@ const MyProfile = () => {
             </p>
 
             <span className="badge badge-primary badge-outline">
-              User
+              {role}
             </span>
           </div>
         </div>
