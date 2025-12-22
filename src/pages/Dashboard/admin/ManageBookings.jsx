@@ -139,7 +139,7 @@ const BookingRow = ({ booking, decorators, onAssign, assigning }) => {
             </button>
           </div>
         ) : (
-          <span className="text-xs opacity-50">Already Assigned</span>
+          <span className="text-xs opacity-50">----</span>
         )}
       </td>
     </tr>

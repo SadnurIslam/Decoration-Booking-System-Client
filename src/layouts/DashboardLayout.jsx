@@ -54,7 +54,7 @@ const DashboardLayout = () => {
           <Logo />
 
           <ul className="mt-10 space-y-1 flex-1">
-            <AnimatedItem to="/dashboard" end icon={<FaHome />}>
+            <AnimatedItem to="/dashboard/profile" end icon={<FaHome />}>
               Dashboard
             </AnimatedItem>
 
@@ -151,9 +151,9 @@ const AnimatedItem = ({ to, children, icon, end }) => (
 
 const UserMenu = () => (
   <>
-    <AnimatedItem to="/dashboard/profile" icon={<FaUserCircle />}>
+    {/* <AnimatedItem to="/dashboard/profile" icon={<FaUserCircle />}>
       My Profile
-    </AnimatedItem>
+    </AnimatedItem> */}
 
     <AnimatedItem to="/dashboard/my-bookings" icon={<FaClipboardList />}>
       My Bookings
@@ -185,13 +185,13 @@ const AdminMenu = () => (
       Manage Decorators
     </AnimatedItem>
 
-    <AnimatedItem to="/dashboard/revenue" icon={<FaMoneyBill />}>
+    {/* <AnimatedItem to="/dashboard/revenue" icon={<FaMoneyBill />}>
       Revenue Monitoring
     </AnimatedItem>
 
     <AnimatedItem to="/dashboard/analytics" icon={<FaChartBar />}>
       Analytics
-    </AnimatedItem>
+    </AnimatedItem> */}
   </>
 );
 
@@ -207,13 +207,13 @@ const DecoratorMenu = () => (
       Today's Schedule
     </AnimatedItem>
 
-    <AnimatedItem to="/dashboard/update-status" icon={<FaTasks />}>
+    {/* <AnimatedItem to="/dashboard/update-status" icon={<FaTasks />}>
       Update Project Status
     </AnimatedItem>
 
     <AnimatedItem to="/dashboard/earnings" icon={<FaMoneyBill />}>
       Earnings Summary
-    </AnimatedItem>
+    </AnimatedItem> */}
   </>
 );
 

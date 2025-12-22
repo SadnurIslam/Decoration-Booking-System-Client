@@ -24,6 +24,8 @@ import PrivateRoute from "./PrivateRoute";
 import ErrorPage from "../pages/ErrorPage/ErrorPage";
 import DecoratorRoute from "./DecoratorRoute";
 import AssignedProjects from "../pages/Dashboard/decorator/AssignedProjects";
+import RevenueMonitoring from "../pages/Dashboard/admin/RevenueMonitoring";
+import TodaySchedule from "../pages/Dashboard/decorator/TodaySchedule";
 
 export const router = createBrowserRouter([
     {
@@ -104,7 +106,7 @@ export const router = createBrowserRouter([
             },
             {
                 path: "assigned-projects",
-                element: <PrivateRoute><DecoratorRoute><AssignedProjects></AssignedProjects></DecoratorRoute></PrivateRoute>
+                element: <DecoratorRoute><AssignedProjects></AssignedProjects></DecoratorRoute>
             },
             {
                 path: "manage-services",
@@ -117,6 +119,14 @@ export const router = createBrowserRouter([
             {
                 path: "manage-decorators",
                 element: <AdminRoute><ManageDecorators></ManageDecorators></AdminRoute>
+            },
+            {
+                path: "revenue",
+                element: <AdminRoute><RevenueMonitoring></RevenueMonitoring></AdminRoute>
+            },
+            {
+                path: "schedule",
+                element: <DecoratorRoute><TodaySchedule></TodaySchedule></DecoratorRoute>
             },
             {
                 path: "*",
