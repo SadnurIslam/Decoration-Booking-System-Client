@@ -106,6 +106,9 @@ VITE_firebase_projectId=your_firebase_projectId
 VITE_firebase_storageBucket=your_firebase_storageBucket
 VITE_firebase_messagingSenderId=your_firebase_messagingSenderId
 VITE_firebase_appId=your_firebase_appId
+```
+
+---
 
 ## 🚀 Run Locally
 
