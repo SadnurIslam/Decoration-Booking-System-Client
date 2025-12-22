@@ -6,6 +6,7 @@ import LoadingSpinner from "../../components/LoadingSpinner";
 import { motion } from "framer-motion";
 import BookingModal from "../Booking/BookingModal";
 import useAuth from "../../hooks/useAuth";
+import NoServiceFound from "./NoServiceFound";
 
 const ServiceDetails = () => {
   const { id } = useParams();
@@ -19,6 +20,15 @@ const ServiceDetails = () => {
   });
 
   if (isLoading || loading) return <LoadingSpinner />;
+
+  if(!service){
+    return (
+      <NoServiceFound
+        title="Service Not Found"
+        description="The service you are trying to access does not exist or may have been removed."
+      />
+    );
+  }
 
   const handleBooking = () => {
     if (!user) {
