@@ -33,6 +33,8 @@ const Services = () => {
         },
     });
 
+    console.log(servicesCategories);
+
     const sortedServices = [...services].sort((a, b) => {
         if (sort === "low") return a.cost - b.cost;
         if (sort === "high") return b.cost - a.cost;

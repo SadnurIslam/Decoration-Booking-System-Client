@@ -4,6 +4,7 @@ import { motion } from "framer-motion";
 import useAuth from "../hooks/useAuth";
 import Logo from "./Logo";
 import MobileLinks from "./MobileLinks";
+import { FaRegUser } from "react-icons/fa";
 
 const Navbar = () => {
   const { user, logOut } = useAuth();
@@ -74,7 +75,7 @@ const Navbar = () => {
           <div className="navbar-end gap-3">
             {user && (
               <Link
-                to="/dashboard"
+                to="/dashboard/profile"
                 className="btn btn-outline btn-sm rounded-full hidden sm:flex"
               >
                 <FiGrid />
@@ -102,8 +103,8 @@ const Navbar = () => {
                   </li>
 
                   <li>
-                    <Link to="/dashboard" className="flex items-center gap-2">
-                      <FiGrid /> Dashboard
+                    <Link to="/dashboard/profile" className="flex items-center gap-2">
+                    <FaRegUser /> Profile
                     </Link>
                   </li>
 

@@ -8,7 +8,7 @@ import LoadingSpinner from "../../components/LoadingSpinner";
 
 const Login = () => {
   const { register, handleSubmit, formState: { errors } } = useForm();
-  const { signInUser} = useAuth();
+  const { signInUser, setLoading} = useAuth();
   const location = useLocation();
   const navigate = useNavigate();
   const [showPassword, setShowPassword] = useState(false);
@@ -17,7 +17,10 @@ const Login = () => {
   const handleLogin = (data) => {
     signInUser(data.email, data.password)
       .then(() => navigate(location?.state || "/"))
-      .catch(err => console.log(err.message));
+      .catch(err => {
+        alert("Login failed: " + err.message);
+      });
+    setLoading(false);
   };
 
   return (

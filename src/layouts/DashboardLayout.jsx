@@ -54,8 +54,8 @@ const DashboardLayout = () => {
           <Logo />
 
           <ul className="mt-10 space-y-1 flex-1">
-            <AnimatedItem to="/dashboard" end icon={<FaHome />}>
-              Dashboard
+            <AnimatedItem to="/dashboard/profile" end icon={<FaHome />}>
+              My Profile
             </AnimatedItem>
 
             {role === "user" && <UserMenu />}

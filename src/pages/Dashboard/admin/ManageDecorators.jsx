@@ -15,10 +15,10 @@ const ManageDecorators = () => {
         refetch();
     };
 
-    const handleReject = async (id) => {
-        await axios.patch(`/decorators/${id}/reject`);
-        refetch();
-    };
+    // const handleReject = async (id) => {
+    //     await axios.patch(`/decorators/${id}/reject`);
+    //     refetch();
+    // };
 
     if (isLoading) return <LoadingSpinner />;
 
@@ -50,12 +50,12 @@ const ManageDecorators = () => {
                                 >
                                     Approve Decorator
                                 </button>
-                                <button
+                                {/* <button
                                     onClick={() => handleReject(d._id)}
                                     className="btn btn-sm btn-error mt-4"
                                 >
                                     Reject Decorator
-                                </button>
+                                </button> */}
                             </>
                         )}
                     </div>

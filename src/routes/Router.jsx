@@ -1,8 +1,8 @@
 import { createBrowserRouter } from "react-router";
 import MainLayout from "../layouts/MainLayout";
 import Home from "../pages/Home/Home";
-import Services from "../pages/services/Services";
-import ServiceDetails from "../pages/services/ServiceDetails";
+import Services from "../pages/Services/Services";
+import ServiceDetails from "../pages/Services/ServiceDetails";
 import AuthLayout from "../layouts/AuthLayout";
 import Register from "../pages/Auth/Register";
 import Login from "../pages/Auth/Login";
@@ -21,6 +21,7 @@ import ManageDecorators from "../pages/Dashboard/admin/ManageDecorators";
 import DecoratorApply from "../pages/Dashboard/user/DecoratorApply";
 import AdminRoute from "./AdminRoute";
 import PrivateRoute from "./PrivateRoute";
+import ErrorPage from "../pages/ErrorPage/ErrorPage";
 
 export const router = createBrowserRouter([
     {
@@ -46,6 +47,10 @@ export const router = createBrowserRouter([
             {
                 path: "/contact",
                 Component: Contact
+            },
+            {
+                path: "*",
+                Component: ErrorPage
             }
         ]
     },
@@ -60,6 +65,10 @@ export const router = createBrowserRouter([
             {
                 path: "register",
                 Component: Register
+            },
+            {
+                path: "*",
+                Component: ErrorPage
             }
         ]
     },
@@ -68,7 +77,7 @@ export const router = createBrowserRouter([
         element: <PrivateRoute><DashboardLayout></DashboardLayout></PrivateRoute>,
         children:[
             {
-                index: true,
+                path: "profile",
                 element: <PrivateRoute><MyProfile></MyProfile></PrivateRoute>
             },
             {
@@ -102,6 +111,10 @@ export const router = createBrowserRouter([
             {
                 path: "manage-decorators",
                 element: <AdminRoute><ManageDecorators></ManageDecorators></AdminRoute>
+            },
+            {
+                path: "*",
+                Component: ErrorPage
             }
         ]
     }

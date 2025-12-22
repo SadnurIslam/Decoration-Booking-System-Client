@@ -23,6 +23,7 @@ const ManageBookings = () => {
             <th>Service</th>
             <th>Status</th>
             <th>Payment</th>
+            <th>Decorator</th>
           </tr>
         </thead>
         <tbody>
@@ -42,6 +43,9 @@ const ManageBookings = () => {
                   {b.payment_status || "unpaid"}
                 </span>
               </td>
+                <td>
+                  {b.decoratorEmail || "Not assigned"}
+                </td>
             </tr>
           ))}
         </tbody>

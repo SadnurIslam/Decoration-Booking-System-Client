@@ -5,18 +5,28 @@ import { useState } from "react";
 import LoadingSpinner from "../../components/LoadingSpinner";
 import { motion } from "framer-motion";
 import BookingModal from "../Booking/BookingModal";
+import useAuth from "../../hooks/useAuth";
 
 const ServiceDetails = () => {
   const { id } = useParams();
   const axios = useAxiosSecure();
   const [open, setOpen] = useState(false);
+  const {loading, user} = useAuth();
 
   const { data: service, isLoading } = useQuery({
     queryKey: ["service-details", id],
     queryFn: async () => (await axios.get(`/services/${id}`)).data,
   });
 
-  if (isLoading) return <LoadingSpinner />;
+  if (isLoading || loading) return <LoadingSpinner />;
+
+  const handleBooking = () => {
+    if (!user) {
+      alert("Please log in to book a service.");
+      return;
+    }
+    setOpen(true);
+  };
 
   return (
     <section className="py-24">
@@ -58,7 +68,7 @@ const ServiceDetails = () => {
 
             <button
               className="btn btn-primary rounded-full px-8"
-              onClick={() => setOpen(true)}
+              onClick={handleBooking}
             >
               Book Now
             </button>

@@ -57,7 +57,7 @@ const MyBookings = () => {
               <th>Service</th>
               <th>Date</th>
               <th>Location</th>
-              <th>Status</th>
+              <th>Event Status</th>
               <th>Payment</th>
               <th>Action</th>
             </tr>
