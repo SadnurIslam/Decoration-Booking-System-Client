@@ -47,9 +47,10 @@ const DecoratorApply = () => {
       name: user.displayName,
       email: user.email,
       phone: data.phone,
+      photo: user.photoURL,
+      rating: 4.0,
       experience: data.experience,
       specialty: data.specialty,
-      rating: 0,
     };
 
     await axios.post("/decorators", decoratorInfo);
