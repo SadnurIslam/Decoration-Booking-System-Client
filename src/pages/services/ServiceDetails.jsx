@@ -7,6 +7,7 @@ import { motion } from "framer-motion";
 import BookingModal from "../Booking/BookingModal";
 import useAuth from "../../hooks/useAuth";
 import NoServiceFound from "./NoServiceFound";
+import {toast} from "react-hot-toast";
 
 const ServiceDetails = () => {
   const { id } = useParams();
@@ -32,7 +33,7 @@ const ServiceDetails = () => {
 
   const handleBooking = () => {
     if (!user) {
-      alert("Please log in to book a service.");
+      toast.error("Please log in to book a service.");
       return;
     }
     setOpen(true);

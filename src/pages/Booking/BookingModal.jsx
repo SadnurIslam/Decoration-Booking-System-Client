@@ -44,7 +44,6 @@ const BookingModal = ({ service, close }) => {
       });
 
       const bookingId = bookingRes.data.insertedId;
-      console.log(data);
 
       // Stripe payment
       const paymentRes = await axios.post("/create-payment-intent", {

@@ -4,7 +4,7 @@ import { useState } from "react";
 import { FiEye, FiEyeOff } from "react-icons/fi";
 import useAuth from "../../hooks/useAuth";
 import SocialLogin from "./SocialLogin";
-import LoadingSpinner from "../../components/LoadingSpinner";
+import { toast } from "react-hot-toast";
 
 const Login = () => {
   const { register, handleSubmit, formState: { errors } } = useForm();
@@ -18,7 +18,7 @@ const Login = () => {
     signInUser(data.email, data.password)
       .then(() => navigate(location?.state || "/"))
       .catch(err => {
-        alert("Login failed: " + err.message);
+        toast.error(err.message);
       });
     setLoading(false);
   };
