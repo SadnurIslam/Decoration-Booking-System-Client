@@ -22,6 +22,8 @@ import DecoratorApply from "../pages/Dashboard/user/DecoratorApply";
 import AdminRoute from "./AdminRoute";
 import PrivateRoute from "./PrivateRoute";
 import ErrorPage from "../pages/ErrorPage/ErrorPage";
+import DecoratorRoute from "./DecoratorRoute";
+import AssignedProjects from "../pages/Dashboard/decorator/AssignedProjects";
 
 export const router = createBrowserRouter([
     {
@@ -99,6 +101,10 @@ export const router = createBrowserRouter([
             {
                 path: "decorator-apply",
                 element: <PrivateRoute><DecoratorApply></DecoratorApply></PrivateRoute>
+            },
+            {
+                path: "assigned-projects",
+                element: <PrivateRoute><DecoratorRoute><AssignedProjects></AssignedProjects></DecoratorRoute></PrivateRoute>
             },
             {
                 path: "manage-services",

@@ -17,18 +17,28 @@ const MyBookings = () => {
   });
 
   const handleCancel = async (id) => {
-    const result = await Swal.fire({
-      title: "Cancel booking?",
-      text: "This action cannot be undone",
+    Swal.fire({
+      title: "Are you sure?",
+      text: "You won't be able to revert this!",
       icon: "warning",
       showCancelButton: true,
-      confirmButtonColor: "#d33",
+      confirmButtonColor: "#3085d6",
+      cancelButtonColor: "#d33",
+      confirmButtonText: "Yes, cancel booking!"
+    }).then((result) => {
+      if (result.isConfirmed) {
+        axios.delete(`/bookings/${id}`).then(() => {
+          refetch();
+        });
+        
+        Swal.fire({
+          title: "Deleted!",
+          text: "Your file has been deleted.",
+          icon: "success"
+        });
+      }
     });
 
-    if (!result.isConfirmed) return;
-
-    await axios.delete(`/bookings/${id}`);
-    refetch();
   };
 
   const handlePayment = async (booking) => {

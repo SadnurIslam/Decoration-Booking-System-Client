@@ -15,7 +15,16 @@ const PaymentHistory = () => {
     },
   });
 
+  
   if (isLoading) return <LoadingSpinner />;
+  
+  
+  // const uniqueTransactionIds = [...new Set(paymentsData.map(p => p.transactionId))];
+
+  // const payments = uniqueTransactionIds.map(txId => {
+  //   return paymentsData.find(p => p.transactionId === txId);
+  // });
+
 
   return (
     <div>
